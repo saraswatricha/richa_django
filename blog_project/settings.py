@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-u==i_92(6e!brjnkn4i4qla1y86ifi-8jgx(u2m4vwu5-yw1%+'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -51,6 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'blog_project.urls'
@@ -122,6 +123,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT=BASE_DIR /'static'
 MEDIA_ROOT= os.path.join(BASE_DIR,'media')
 MEDIA_URL= '/media/'
 
@@ -136,10 +138,11 @@ CRISPY_TEMPLATE_PACK='bootstrap4'
 LOGIN_REDIRECT_URL='blog_project'
 
 LOGIN_URL='login'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST='smtp.gmail.com'
 EMAIL_PORT=587
 EMAIL_USE_TLS=True
-EMAIL_HOST_USER='richasaraswat01@gmail.com'#os.environ.get('user-name')
-EMAIL_HOST_PASSWORD='@@ussr@@'#os.environ.get('user-password')
+EMAIL_HOST_USER='richasaraswat@gmail.com'#os.environ.get('user-name')
+EMAIL_HOST_PASSWORD='Richa'#os.environ.get('user-password')
